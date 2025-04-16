@@ -31,22 +31,22 @@ def save_tasks():
 # Task Functions
 # ----------------------------
 
-# Updated list_tasks function to use Align and Panel for better visuals
+# Updated list_tasks function to use custom hex colors
 def list_tasks():
     if not tasks:
-        console.print(Panel("[yellow]No tasks yet![/yellow]", style="bold red"))
+        console.print(Panel("[#660099]No tasks yet![/#660099]", style="bold red"))
         return
 
-    table = Table(title=Align("📝 Your Todo List", align="center", style="bold magenta"))
-    table.add_column("ID", style="cyan", no_wrap=True)
-    table.add_column("Task", style="magenta")
-    table.add_column("Status", style="green")
+    table = Table(title=Align("📝 Your Todo List", align="center", style="bold #4d0d99"))
+    table.add_column("ID", style="#003399", no_wrap=True)
+    table.add_column("Task", style="#1a2699")
+    table.add_column("Status", style="#331a99")
 
     for i, task in enumerate(tasks):
         status = "[x] Done" if task["done"] else "[ ] Not done"
         table.add_row(str(i), task["title"], status)
 
-    console.print(Panel(table, title="[bold cyan]Tasks[/bold cyan]", border_style="blue"))
+    console.print(Panel(table, title="[bold #660099]Tasks[/bold #660099]", border_style="#4d0d99"))
 
 def add_task():
     title = input("Enter task title: ")
@@ -78,16 +78,16 @@ def mark_complete():
 # Main Loop
 # ----------------------------
 
-# Updated main menu to use Align and Panel for better visuals
+# Updated main menu to use custom hex colors
 def main():
     while True:
-        console.print(Panel(Align("[bold cyan]Todo List Manager[/bold cyan]", align="center"), border_style="green"))
+        console.print(Panel(Align("[bold italic #003399]Todo List Manager[/bold italic #003399]", align="center"), border_style="#1a2699"))
         console.print(Columns([
-            Text("1. List Tasks", style="cyan"),
-            Text("2. Add Task", style="magenta"),
-            Text("3. Mark Task as Complete", style="green"),
-            Text("4. Delete Task", style="red"),
-            Text("5. Quit", style="blue")
+            Text("1. List Tasks", style="#003399"),
+            Text("2. Add Task", style="#1a2699"),
+            Text("3. Mark Task as Complete", style="#331a99"),
+            Text("4. Delete Task", style="#4d0d99"),
+            Text("5. Quit", style="#660099")
         ]))
 
         choice = input("Choose an option: ")
@@ -101,10 +101,10 @@ def main():
         elif choice == '4':
             delete_task()
         elif choice == '5':
-            console.print(Panel("[bold blue]Goodbye![/bold blue]", border_style="blue"))
+            console.print(Panel("[bold #003399]Goodbye![/bold #003399]", border_style="#1a2699"))
             break
         else:
-            console.print(Panel("[bold red]Invalid choice![/bold red]", border_style="red"))
+            console.print(Panel("[bold #4d0d99]Invalid choice![/bold #4d0d99]", border_style="#660099"))
 
 # ----------------------------
 # Run It!
